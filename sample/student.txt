@@ -1,0 +1,56 @@
+import bht.Student;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+
+//================================================================
+
+logger.info("Unsorted");
+Student[] arrStudent = {
+        new Student(1653006, "Huynh Thanh Binh", "Binh Chanh"),
+        new Student(1653011, "Vu Minh Dang", "Go Vap"),
+        new Student(1653005, "Vu Tuong Bach", "Binh Thanh"),
+        new Student(1653020, "Vu Hai", "Binh Chanh"),
+        new Student(1653018, "Phan Tran The Duy", "Binh Thanh")
+};
+Student[] origin = arrStudent.clone();
+
+for (Student s : arrStudent) {
+    logger.info(s.toString());
+}
+
+logger.info("\nSort by ID:");
+Arrays.sort(arrStudent, Student.BY_ID);
+for (Student s : arrStudent) {
+    logger.info(s.toString());
+}
+
+logger.info("\nSort by Name:");
+Arrays.sort(arrStudent, Student.BY_NAME);
+for (Student s : arrStudent) {
+    logger.info(s.toString());
+}
+
+logger.info("\nSort by Address:");
+Arrays.sort(arrStudent, Student.BY_ADDRESS);
+for (Student s : arrStudent) {
+    logger.info(s.toString());
+}
+
+logger.info("\nCurrent:");
+for (Student s : arrStudent) {
+    logger.info(s.toString());
+}
+
+logger.info("\nOrigin:");
+for (Student s : origin) {
+    logger.info(s.toString());
+}
+
+Arrays.sort(arrStudent);
+
+logger.info("\nSort by ID:");
+for (Student s : arrStudent) {
+    logger.info(s.toString());
+}
