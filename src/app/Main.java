@@ -10,13 +10,17 @@ public class Main {
     public static void main(String... args) {
         Logger logger = MyFormatter.reformatLogger(Main.class);
 
+        if (false)
+            throw new ArithmeticException("divide by zero ");
+
         try {
-            String str = "Binh";
+            String str = null;
             logger.info("\ntry block caught");
             logger.info(String.valueOf(str.length()));
+        } catch (NullPointerException e) {
+            logger.info("\nException: " + e.toString());
         } catch (Exception e) {
-            logger.info("\ncatch block caught");
-            logger.info(e.toString());
+            logger.info("\nOther exceptions");
         } finally {
             logger.info("\nfinally block caught");
         }
