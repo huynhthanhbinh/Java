@@ -7,7 +7,7 @@ import java.util.logging.ConsoleHandler;
 import java.util.logging.Level;
 
 public class MyFormatter extends Formatter {
-    public static final Logger reformatLogger(Class main) {
+    public static Logger reformatLogger(Class main) {
         Logger logger = Logger.getLogger(main.getName());
         MyFormatter myFormatter = new MyFormatter();
         ConsoleHandler consoleHandler = new ConsoleHandler();
