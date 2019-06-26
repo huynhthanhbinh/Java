@@ -9,14 +9,10 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
-/**
- * @author Huynh Thanh Binh (BHT) - ELCA
- */
-
-public class Main {
+public class DemoFileNotExist {
     public static void main(String... args) {
-        Logger logger = MyFormatter.reformatLogger(Main.class);
-        String input = "src/app/Main";
+        Logger logger = MyFormatter.reformatLogger(DemoMain.class);
+        String input = "src/app/DemoMain";
         String output = "test.txt";
 
         try (Scanner scanner = new Scanner(new File(input));
