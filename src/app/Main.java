@@ -15,10 +15,12 @@ import java.util.logging.Logger;
 public class Main {
     public static void main(String... args) {
         Logger logger = MyFormatter.reformatLogger(Main.class);
-        String fileName = "";
+        String fileName = "src/app/Main.java";
+        Scanner file = null;
 
-        try (Scanner file = new Scanner(new File(fileName))) {
-            if (file.hasNextLine()) {
+        try {
+            file = new Scanner(new File(fileName));
+            while (file.hasNextLine()) {
                 logger.info(file.nextLine());
             }
         } catch (FileNotFoundException e) {
@@ -26,7 +28,8 @@ public class Main {
                 try {
                     throw new FileNotExistException("(" + fileName + ") file is not exist", e);
                 } catch (FileNotExistException ex) {
-                    logger.info("Exception is caught at line: " + e.getStackTrace()[e.getStackTrace().length - 1].getLineNumber());
+                    int lineNumber = e.getStackTrace()[e.getStackTrace().length - 1].getLineNumber();
+                    logger.info("Exception is caught at line: " + lineNumber);
                     ExceptionLogger.log(logger, ex);
                 }
             }
@@ -34,6 +37,9 @@ public class Main {
             ExceptionLogger.log(logger, e);
         } finally {
             logger.info("Reach finally block");
+            if (file != null) {
+                file.close();
+            }
         }
     }
 }
