@@ -5,6 +5,7 @@ import bht_exception.FileNotExistException;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
@@ -15,16 +16,20 @@ import java.util.logging.Logger;
 public class Main {
     public static void main(String... args) {
         Logger logger = MyFormatter.reformatLogger(Main.class);
-        String fileName = "src/app/Main";
+        String input = "src/app/Main.java";
+        String output = "test.txt";
 
-        try (Scanner file = new Scanner(new File(fileName))) {
-            while (file.hasNextLine()) {
-                logger.info(file.nextLine());
+        try (Scanner scanner = new Scanner(new File(input));
+             PrintWriter writer = new PrintWriter(new File(output))) {
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                writer.println(line);
+                logger.info(line);
             }
         } catch (FileNotFoundException e) {
-            if (!FileNotExistException.isCorrectFilename(fileName)) {
+            if (!FileNotExistException.isCorrectFilename(input)) {
                 try {
-                    throw new FileNotExistException("(" + fileName + ") file is not exist", e);
+                    throw new FileNotExistException("(" + input + ") file is not exist", e);
                 } catch (FileNotExistException ex) {
                     int lineNumber = e.getStackTrace()[e.getStackTrace().length - 1].getLineNumber();
                     logger.info("Exception is caught at line: " + lineNumber);
