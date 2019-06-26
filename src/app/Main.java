@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 public class Main {
     public static void main(String... args) {
         Logger logger = MyFormatter.reformatLogger(Main.class);
-        String input = "src/app/Main.java";
+        String input = "src/app/Main";
         String output = "test.txt";
 
         try (Scanner scanner = new Scanner(new File(input));
