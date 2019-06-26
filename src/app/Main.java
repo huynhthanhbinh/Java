@@ -15,11 +15,9 @@ import java.util.logging.Logger;
 public class Main {
     public static void main(String... args) {
         Logger logger = MyFormatter.reformatLogger(Main.class);
-        String fileName = "src/app/Main.java";
-        Scanner file = null;
+        String fileName = "src/app/Main";
 
-        try {
-            file = new Scanner(new File(fileName));
+        try (Scanner file = new Scanner(new File(fileName))) {
             while (file.hasNextLine()) {
                 logger.info(file.nextLine());
             }
@@ -37,9 +35,6 @@ public class Main {
             ExceptionLogger.log(logger, e);
         } finally {
             logger.info("Reach finally block");
-            if (file != null) {
-                file.close();
-            }
         }
     }
 }
