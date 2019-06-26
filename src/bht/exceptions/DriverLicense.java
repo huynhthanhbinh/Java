@@ -1,4 +1,4 @@
-package bht_exception;
+package bht.exceptions;
 
 public class DriverLicense {
     private String name;

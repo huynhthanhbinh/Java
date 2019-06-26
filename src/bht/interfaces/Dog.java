@@ -1,4 +1,4 @@
-package bht_interface;
+package bht.interfaces;
 
 public class Dog extends Animal {
     public void bark() {

@@ -1,7 +1,7 @@
 package app;
 
-import bht_exception.ExceptionLogger;
-import bht_exception.FileNotExistException;
+import bht.exceptions.ExceptionLogger;
+import bht.exceptions.FileNotExistException;
 
 import java.io.File;
 import java.io.FileNotFoundException;

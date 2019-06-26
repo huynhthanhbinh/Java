@@ -1,4 +1,4 @@
-package bht_interface;
+package bht.interfaces;
 
 public interface Movable {
     int x = 100;

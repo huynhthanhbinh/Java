@@ -1,4 +1,4 @@
-package bht_interface;
+package bht.interfaces;
 
 public abstract class Animal implements Movable {
     public abstract void eat();

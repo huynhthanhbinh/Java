@@ -1,4 +1,4 @@
-package bht_exception;
+package bht.exceptions;
 
 public class InvalidAgeException extends RuntimeException {
     private String message;

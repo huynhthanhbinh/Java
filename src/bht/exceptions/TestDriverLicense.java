@@ -1,4 +1,4 @@
-package bht_exception;
+package bht.exceptions;
 
 import app.MyFormatter;
 

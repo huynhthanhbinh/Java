@@ -1,6 +1,5 @@
-package bht;
+package bht.oop;
 
-import java.io.IOException;
 import java.util.Comparator;
 
 public class Student extends Person implements Comparable<Student> {

@@ -1,4 +1,4 @@
-package bht_exception;
+package bht.exceptions;
 
 import java.io.File;
 import java.io.IOException;
