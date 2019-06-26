@@ -1,6 +1,6 @@
 package bht_exception;
 
-public class InvalidAgeException extends Exception {
+public class InvalidAgeException extends RuntimeException {
     private String message;
     private Throwable cause;
 
