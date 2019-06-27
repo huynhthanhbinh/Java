@@ -3,7 +3,9 @@ package app;
 
 import bht.oop.Person;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Spliterator;
 import java.util.logging.Logger;
 
 public class DemoCollection {
@@ -37,7 +39,5 @@ public class DemoCollection {
         for (Person person : people) {
             logger.info("Hello " + person.getName());
         }
-
-
     }
 }
