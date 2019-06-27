@@ -10,6 +10,10 @@ public class Student extends Person implements Comparable<Student> {
     private int studentID;
     private String address;
 
+    public Student(String name) {
+        super(name);
+    }
+
     public Student(Student s) {
         studentID = s.studentID;
         setName(s.getName());

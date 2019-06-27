@@ -25,7 +25,6 @@ public class DemoWildcards {
         List<House> listHouse = new ArrayList<>(Arrays.asList(arrHouse).subList(0, 8));
         List<Cottage> listCottage = new ArrayList<>(Arrays.asList(arrCottage).subList(0, 9));
 
-
         Building.paintAllBuildings(listHouse);
         Building.paintAllBuildings(listCottage);
     }
