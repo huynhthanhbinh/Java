@@ -19,10 +19,12 @@ public class DemoLambdaExpression {
         return fobj.operation(a, b);
     }
 
+    @FunctionalInterface
     interface FuncInter1 {
         int operation(int a, int b);
     }
 
+    @FunctionalInterface
     interface FuncInter2 {
         void sayMessage(String message);
     }
