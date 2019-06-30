@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class DemoFlatMap {
     public static void main(String[] args) {
@@ -26,7 +28,7 @@ public class DemoFlatMap {
                 .map(a -> a.stream()
                         .map(x -> x * x)
                         .collect(Collectors.toList()))
-                .forEach(x->logger.info(String.valueOf(x)));
+                .forEach(x -> logger.info(String.valueOf(x)));
 
         logger.info("");
 
@@ -34,6 +36,14 @@ public class DemoFlatMap {
                 .flatMap(a -> a.stream()
                         .map(x -> x * x))
                 .collect(Collectors.toCollection(LinkedList::new))
-                .forEach(x->logger.info(String.valueOf(x)));
+                .forEach(x -> logger.info(String.valueOf(x)));
+
+        Stream s = IntStream.of(4, 5, 6).mapToObj(e -> e); //mapToObj method is needed
+        IntStream is = Stream.of(4, 5, 6).mapToInt(e -> e); //mapToInt method is needed
+
+        logger.info("");
+        s.forEach(x -> logger.info(String.valueOf(x)));
+        logger.info("");
+        is.forEach(x -> logger.info(String.valueOf(x)));
     }
 }

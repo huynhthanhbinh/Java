@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 
 public class DemoFileNotExist {
     public static void main(String... args) {
-        Logger logger = MyFormatter.reformatLogger(DemoMain.class);
+        Logger logger = MyFormatter.reformatLogger(DemoFileNotExist.class);
         String input = "src/app/DemoMain";
         String output = "test.txt";
 
