@@ -5,6 +5,9 @@ import java.util.logging.Logger;
 
 public class Company {
     public static final Comparator<Company> BY_CAPITAL_DESC = new ByCapitalDesc();
+    public static final Comparator<Company> BY_COUNTRY_ASC = new ByCountry();
+    public static final Comparator<Company> BY_COUNTRY_THEN_CAPITAL = new ByCountry().thenComparing(BY_CAPITAL_DESC);
+
     private int id;
     private String name;
     private String foundation;
@@ -42,6 +45,10 @@ public class Company {
         return country;
     }
 
+    public String getName() {
+        return name;
+    }
+
     @Override
     public String toString() {
         return String
@@ -58,6 +65,13 @@ public class Company {
         @Override
         public int compare(Company o1, Company o2) {
             return o2.capital - o1.capital;
+        }
+    }
+
+    private static class ByCountry implements Comparator<Company> {
+        @Override
+        public int compare(Company o1, Company o2) {
+            return o1.country.compareTo(o2.country);
         }
     }
 }
