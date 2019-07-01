@@ -21,7 +21,7 @@ public class DemoFile {
         logger.info("");
 
         lines.stream()
-                .map(x -> Company.toCompany(x))
+                .map(Company::toCompany)
                 .forEach(Company::log);
 
         logger.info("");
@@ -29,7 +29,7 @@ public class DemoFile {
         logger.info("");
 
         lines.stream()
-                .map(x -> Company.toCompany(x))
+                .map(Company::toCompany)
                 .filter(company -> company.getCountry().equals("CH"))
                 .sorted(Company.BY_CAPITAL_DESC)
                 .forEach(Company::log);
