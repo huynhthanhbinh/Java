@@ -8,6 +8,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.TreeMap;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
@@ -35,6 +38,16 @@ public class DemoFile {
         companies.stream()
                 .sorted(Company.BY_COUNTRY_THEN_CAPITAL)
                 .forEach(Company::log);
+
+
+        logger.info("\nTop 1 capital by Country\n");
+        Map topCompanies = companies.stream()
+                .collect(Collectors.groupingBy(
+                        Company::getCountry,
+                        Collectors.maxBy(Company.BY_CAPITAL_ASC)));
+
+        TreeMap<String, Optional<Company>> topCompaniesSorted = new TreeMap(topCompanies);
+        topCompaniesSorted.forEach(Company::logMap);
 
 
         logger.info("\nFilter on Country by CH, sorted by Capital descending order\n");

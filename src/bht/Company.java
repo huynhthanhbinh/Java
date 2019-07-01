@@ -1,9 +1,11 @@
 package bht;
 
 import java.util.Comparator;
+import java.util.Optional;
 import java.util.logging.Logger;
 
 public class Company {
+    public static final Comparator<Company> BY_CAPITAL_ASC = new ByCapitalAsc();
     public static final Comparator<Company> BY_CAPITAL_DESC = new ByCapitalDesc();
     public static final Comparator<Company> BY_COUNTRY_ASC = new ByCountry();
     public static final Comparator<Company> BY_COUNTRY_THEN_CAPITAL = new ByCountry().thenComparing(BY_CAPITAL_DESC);
@@ -35,10 +37,22 @@ public class Company {
     public static void log(Company c) {
         StackTraceElement[] x = Thread.currentThread().getStackTrace();
         int n = x.length;
-        StackTraceElement current = x[n-1];
+        StackTraceElement current = x[n - 1];
 
         Logger logger = Logger.getLogger(current.getClassName());
         logger.info(c.toString());
+    }
+
+    public static void logMap(String s, Optional<Company> company) {
+        StackTraceElement[] x = Thread.currentThread().getStackTrace();
+        int n = x.length;
+        StackTraceElement current = x[n - 1];
+
+        Logger logger = Logger.getLogger(current.getClassName());
+        logger.info(String.format("%8s | %-25s | %,8d",
+                s,
+                company.get().getName(),
+                company.get().getCapital()));
     }
 
     public String getCountry() {
@@ -47,6 +61,10 @@ public class Company {
 
     public String getName() {
         return name;
+    }
+
+    public int getCapital() {
+        return capital;
     }
 
     @Override
@@ -59,6 +77,13 @@ public class Company {
                         this.capital,
                         this.country,
                         this.headquarterID);
+    }
+
+    private static class ByCapitalAsc implements Comparator<Company> {
+        @Override
+        public int compare(Company o1, Company o2) {
+            return o1.capital - o2.capital;
+        }
     }
 
     private static class ByCapitalDesc implements Comparator<Company> {
